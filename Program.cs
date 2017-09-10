@@ -21,16 +21,41 @@ namespace FitnessTracker
         else 
         {
           // Add minutes exercised to total 
-          runningTotal += int.Parse(entry); 
-        
-          // Display total minutes exercised to screen 
-          Console.WriteLine($"You've entered {entry} minutes"); 
-          Console.WriteLine($"Your total running time is: {runningTotal} minutes"); 
+          int minutes = int.Parse(entry); 
+          if (minutes <= 0)
+          {
+            Console.WriteLine($"{minutes} is not an acceptable value."); 
+            continue; 
+          }
+          else {
+            
+            if (minutes <= 10) 
+            {
+              Console.WriteLine("Better than nothing, am I right?"); 
+            }
+            else if (minutes <= 30) 
+            {
+              Console.WriteLine("Look at you!"); 
+            }
+            else if (minutes <= 60) 
+            {
+              Console.WriteLine("You must be a Ninja Warrior in training"); 
+            }
+            else 
+            {
+              Console.WriteLine("Now you're just showing off"); 
+            }
 
-          // Repeat until user quits 
+            runningTotal = runningTotal + minutes; 
+
+            // Display total minutes exercised to screen 
+            Console.WriteLine($"You've entered {entry} minutes"); 
+            Console.WriteLine($"Your total running time is: {runningTotal} minutes"); 
+            // Repeat until user quits 
+          }
         }  
-        Console.WriteLine("Goodbye"); 
       }
+       Console.WriteLine("Goodbye"); 
     }
   }
 }
